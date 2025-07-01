@@ -8,73 +8,66 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     body {
-      margin: 0;
       font-family: 'Poppins', sans-serif;
+      margin: 0;
       background-color: #f5f7fa;
       color: #333;
     }
 
-    #header-placeholder {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-
     .hero {
-      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2)),
-                  url('assets/markets-banner.jpg') no-repeat center center/cover;
+      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('assets/markets-banner.jpg') no-repeat center center/cover;
       color: white;
-      text-align: center;
       padding: 100px 30px;
+      text-align: center;
     }
 
     .hero h1 {
       font-size: 42px;
-      margin-bottom: 10px;
+      margin: 0;
     }
 
     .hero p {
       font-size: 18px;
-      max-width: 700px;
-      margin: auto;
+      max-width: 600px;
+      margin: 10px auto 0;
     }
 
     .container {
       max-width: 1200px;
-      margin: 50px auto;
-      padding: 0 20px;
+      margin: 40px auto;
+      padding: 0 30px;
     }
 
     .section-title {
       text-align: center;
-      font-size: 32px;
-      color: #0d47a1;
+      font-size: 30px;
       margin-bottom: 30px;
+      color: #0d47a1;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
+      gap: 25px;
     }
 
     .card {
-      background: white;
+      background: #fff;
       padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       transition: 0.3s;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     }
 
     .card h3 {
-      color: #0d47a1;
       margin-top: 0;
       font-size: 20px;
+      color: #1b5e20;
     }
 
     .card ul {
@@ -82,31 +75,61 @@
       padding: 0;
     }
 
-    .card ul li {
-      padding: 6px 0;
-      position: relative;
-      padding-left: 24px;
-    }
-
     .card ul li::before {
       content: '✔';
-      position: absolute;
-      left: 0;
       color: #2e7d32;
+      margin-right: 8px;
+    }
+
+    .card ul li {
+      padding: 5px 0;
+    }
+
+    .catalog-section {
+      background-color: #f2f6fc;
+      padding: 60px 30px;
+      text-align: center;
+    }
+
+    .catalog-section h2 {
+      font-size: 32px;
+      color: #0d47a1;
+      margin-bottom: 10px;
+    }
+
+    .catalog-section p {
+      font-size: 16px;
+      color: #444;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .catalog-section a {
+      display: inline-block;
+      background-color: #d60000;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .catalog-section a i {
+      margin-right: 8px;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: #0d47a1;
+      background-color: #0d47a1;
       color: white;
-      margin-top: 60px;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Constant Header -->
+  <!-- Header -->
   <div id="header-placeholder"></div>
   <script>
     fetch("header.html")
@@ -122,8 +145,8 @@
     <p>Serving diverse industries with premium packaging solutions.</p>
   </section>
 
-  <div class="container">
-    <!-- Our Markets -->
+  <!-- Markets Section -->
+  <section class="container">
     <h2 class="section-title">Our Markets</h2>
     <div class="grid">
       <div class="card">
@@ -163,34 +186,42 @@
       </div>
     </div>
 
-    <!-- Our Products -->
+    <!-- Products Section -->
     <h2 class="section-title" style="margin-top: 60px;">Our Products</h2>
     <div class="grid">
       <div class="card">
-        <h3><a href="product-paper-bags.html" style="text-decoration: none; color: inherit;">Paper Bags</a></h3>
+        <h3><a href="product-paper-bags.html" style="color: #1b5e20; text-decoration: none;">Paper Bags</a></h3>
         <ul>
-          <li><a href="product-paper-bags.html#grocery" style="color: #333;">Grocery Bags</a></li>
-          <li><a href="product-paper-bags.html#retail" style="color: #333;">Retail/Shopping Bags</a></li>
-          <li><a href="product-paper-bags.html#sweet" style="color: #333;">Sweet/Bakery Carry Bags</a></li>
-          <li><a href="product-paper-bags.html#white" style="color: #333;">Standard White Bags</a></li>
-          <li><a href="product-paper-bags.html#luxury" style="color: #333;">Luxury Bags</a></li>
+          <li>Grocery Bags</li>
+          <li>Retail/Shopping Bags</li>
+          <li>Sweet/Bakery Carry Bags</li>
+          <li>Standard White Bags</li>
+          <li>Luxury Bags</li>
         </ul>
       </div>
       <div class="card">
-        <h3><a href="product-packaging-boxes.html" style="text-decoration: none; color: inherit;">Packaging Boxes</a></h3>
+        <h3><a href="product-packaging-boxes.html" style="color: #1b5e20; text-decoration: none;">Packaging Boxes</a></h3>
         <ul>
-          <li><a href="product-packaging-boxes.html#gifting" style="color: #333;">Corporate Gifting Boxes</a></li>
-          <li><a href="product-packaging-boxes.html#sweetboxes" style="color: #333;">Sweet Boxes (Rigid & Folding)</a></li>
-          <li><a href="product-packaging-boxes.html#snacks" style="color: #333;">Snacks Folding Boxes</a></li>
-          <li><a href="product-packaging-boxes.html#corrugation" style="color: #333;">Corrugation Boxes</a></li>
-          <li><a href="product-packaging-boxes.html#rigid" style="color: #333;">Customized Rigid Boxes</a></li>
-          <li><a href="product-packaging-boxes.html#dryfruit" style="color: #333;">Dry Fruit Boxes</a></li>
-          <li><a href="product-packaging-boxes.html#jewellery" style="color: #333;">Jewellery Boxes</a></li>
+          <li>Corporate Gifting Boxes</li>
+          <li>Sweet Boxes</li>
+          <li>Snacks Folding Boxes</li>
+          <li>Corrugation Boxes</li>
+          <li>Jewellery Boxes</li>
         </ul>
       </div>
     </div>
-  </div>
+  </section>
 
+  <!-- 📄 Catalog Download Section -->
+  <section class="catalog-section">
+    <h2>Download Our Product Catalog</h2>
+    <p>Explore our full range of paper bags, packaging boxes, and eco-friendly solutions in a single downloadable PDF.</p>
+    <a href="assets/catalogs/shree-ram-packers-catalog.pdf" download>
+      <i class="fas fa-file-download"></i> Download Catalog
+    </a>
+  </section>
+
+  <!-- Footer -->
   <footer>
     &copy; 2025 Shree Ram Packers. All rights reserved.
   </footer>
