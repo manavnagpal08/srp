@@ -2,138 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us | Shree Ram Packers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Contact | Shree Ram Packers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
       margin: 0;
-      background-color: #f7f9fc;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f9;
       color: #333;
-    }
-    header {
-      background: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      position: relative;
-    }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: #0d47a1;
-      bottom: -4px;
-      left: 0;
-      transition: width 0.3s;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
-    nav a:hover {
-      color: #0d47a1;
-    }
-    .dropdown {
-      position: relative;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 200px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      z-index: 1;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    .dropdown-content a {
-      color: #333;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
     }
 
     .hero {
-      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('contact.jpg') no-repeat center center/cover;
+      background: linear-gradient(to right, rgba(13, 71, 161, 0.8), rgba(0, 0, 0, 0.4)),
+                  url('assets/contact.jpg') center/cover no-repeat;
       color: white;
-      padding: 100px 30px;
       text-align: center;
+      padding: 100px 30px;
+      backdrop-filter: blur(3px);
     }
 
     .hero h1 {
-      font-size: 40px;
+      font-size: 42px;
       margin-bottom: 10px;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 30px;
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .contact-container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 40px;
     }
 
-    .contact-box, .info-box {
-      flex: 1 1 400px;
-      background: #fff;
+    .contact-form {
+      flex: 1 1 500px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
-    .contact-box h2, .info-box h2 {
+    .contact-form h2 {
+      margin-bottom: 20px;
       color: #0d47a1;
     }
 
-    .contact-box form input, .contact-box form textarea {
+    .contact-form input,
+    .contact-form textarea {
       width: 100%;
       padding: 12px;
-      margin: 10px 0;
-      border-radius: 6px;
+      margin-bottom: 16px;
       border: 1px solid #ccc;
+      border-radius: 8px;
       font-size: 16px;
+      font-family: inherit;
+      resize: vertical;
     }
 
-    .contact-box form button {
-      padding: 12px 20px;
-      background: #0d47a1;
+    .contact-form button {
+      background-color: #d60000;
       color: white;
+      padding: 12px 20px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
     }
 
-    .contact-box form button:hover {
-      background: #08306b;
+    .contact-form button:hover {
+      background-color: #b30000;
     }
 
-    .info-box p a {
+    .contact-info {
+      flex: 1 1 300px;
+    }
+
+    .contact-info h3 {
       color: #0d47a1;
-      text-decoration: none;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 10px;
+      margin-top: 20px;
     }
 
     .whatsapp-float {
@@ -144,87 +116,87 @@
     }
 
     .whatsapp-float img {
-      width: 55px;
-      height: 55px;
+      width: 60px;
+      height: 60px;
     }
 
     footer {
+      background: #0d47a1;
+      color: white;
       text-align: center;
       padding: 20px;
-      background-color: #0d47a1;
-      color: white;
-      margin-top: 50px;
+      margin-top: 60px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .hero h1 {
-        font-size: 28px;
+        font-size: 32px;
       }
-      .container {
+
+      .contact-container {
         flex-direction: column;
-        padding: 0 20px;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="logo.png" height="50" alt="Shree Ram Packers">
-    <nav>
-      <a href="index.html">Home</a>
-      <div class="dropdown">
-        <a href="#">About ▾</a>
-        <div class="dropdown-content">
-          <a href="company-background.html">Company Background</a>
-          <a href="sustainability.html">Sustainability</a>
-          <a href="certifications.html">Quality & Certifications</a>
-        </div>
-      </div>
-      <a href="#">Innovation</a>
-      <a href="#">Markets</a>
-      <a href="locations.html">Locations</a>
-      <a href="contact.html" style="color:#0d47a1;">Contact</a>
-    </nav>
-  </header>
+  <!-- Load Header -->
+  <div id="header-placeholder"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+      });
+  </script>
 
-  <section class="hero">
+  <!-- Hero -->
+  <section class="hero" data-aos="fade-up">
     <h1>Contact Us</h1>
-    <p>Have a question or inquiry? Reach out to us!</p>
+    <p>Have questions or want to get in touch? We're here to help!</p>
   </section>
 
-  <section class="container">
-    <div class="contact-box">
+  <!-- Contact Section -->
+  <section class="contact-container">
+    <div class="contact-form" data-aos="fade-right">
       <h2>Send Us a Message</h2>
-      <form action="https://formsubmit.co/manav.nagpal2005@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="thank-you.html">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-        <button type="submit">Submit</button>
+      <form action="mailto:info@shreerampackers.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="subject" placeholder="Subject" />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
       </form>
     </div>
 
-    <div class="info-box">
-      <h2>Our Contact Details</h2>
-      <p><strong>Address:</strong><br>
-        Plot No-54, 14th Cross Road,<br>
+    <div class="contact-info" data-aos="fade-left">
+      <h3>Head Office</h3>
+      <p><strong>Address:</strong> Plot No-54, 14th Cross Road,<br>
         Veerapa Reddy Layout, Parappana Agrahara Layout,<br>
-        Post Hosa Road, Electronic City,<br>
-        Bengaluru, Karnataka 560100</p>
-      <p><strong>Phone:</strong> <a href="tel:+917349709870">+91-07349709870</a></p>
-      
+        Post Hosa Road, Electronic City, Bengaluru, Karnataka 560100</p>
+      <p><strong>Email:</strong> info@shreerampackers.com</p>
+      <p><strong>Phone:</strong> +91-7349709870</p>
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.485141189!2d77.65790907517784!3d12.876495887430208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6d3f99ad446d%3A0xffc70422027f664f!2sShree%20Ram%20Packers!5e0!3m2!1sen!2sin!4v1751377907503!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </section>
 
+  <!-- WhatsApp Button -->
   <a class="whatsapp-float" href="https://wa.me/917349709870" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp"/>
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp Chat"/>
   </a>
 
+  <!-- Footer -->
   <footer>
     &copy; 2025 Shree Ram Packers. All rights reserved.
   </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
 </body>
 </html>

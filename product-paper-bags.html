@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Paper Bags | Shree Ram Packers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    /* Header loaded dynamically */
+    #header-placeholder {
+      margin-bottom: 30px;
+    }
+
+    .hero {
+      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2)),
+        url('assets/paper-bags-hero.jpg') no-repeat center center/cover;
+      padding: 100px 30px;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .bag-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .bag-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: 0.3s;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .bag-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .bag-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .bag-card h3 {
+      margin: 15px;
+      font-size: 20px;
+      color: #0d47a1;
+    }
+
+    .bag-card p {
+      margin: 0 15px 15px;
+      font-size: 15px;
+      display: none;
+      color: #555;
+    }
+
+    .bag-card.open p {
+      display: block;
+    }
+
+    footer {
+      background: #0d47a1;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Paper Bags</h1>
+    <p>Explore our wide range of eco-friendly and custom paper bags for every industry and use.</p>
+  </section>
+
+  <!-- Product Cards -->
+  <div class="container">
+    <div class="bag-grid">
+      <div class="bag-card" onclick="toggleCard(this)">
+        <img src="assets/paperbag-grocery.jpg" alt="Grocery Bag">
+        <h3>Grocery Bags</h3>
+        <p>Durable and recyclable kraft paper bags ideal for groceries and daily essentials. Available in multiple sizes with or without handles.</p>
+      </div>
+      <div class="bag-card" onclick="toggleCard(this)">
+        <img src="assets/retail-bag.jpg" alt="Retail Bag">
+        <h3>Retail & Shopping Bags</h3>
+        <p>Stylish printed paper bags for retail, clothing, and boutiques. Made from thick kraft paper with twisted or flat handles.</p>
+      </div>
+      <div class="bag-card" onclick="toggleCard(this)">
+        <img src="assets/sweet-bag.jpg" alt="Sweet Bag">
+        <h3>Sweet/Bakery Bags</h3>
+        <p>Grease-resistant paper bags designed to hold sweets, pastries, and bakery items safely and hygienically.</p>
+      </div>
+      <div class="bag-card" onclick="toggleCard(this)">
+        <img src="assets/white-bag.jpg" alt="White Bag">
+        <h3>Standard White Bags</h3>
+        <p>Clean and minimalistic white paper bags perfect for branding and promotions. Available in a variety of sizes.</p>
+      </div>
+      <div class="bag-card" onclick="toggleCard(this)">
+        <img src="assets/luxury-bag.jpg" alt="Luxury Bag">
+        <h3>Luxury Paper Bags</h3>
+        <p>Premium laminated paper bags with ribbon handles and embossed logo printing — ideal for high-end retail or gifting.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Shree Ram Packers. All rights reserved.
+  </footer>
+
+  <!-- JS Toggle Function -->
+  <script>
+    function toggleCard(card) {
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.bag-card').forEach(c => c.classList.remove('open'));
+      if (!isOpen) card.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>

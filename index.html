@@ -6,34 +6,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
-  <header class="navbar">
-    <div class="container">
-      <div class="logo">
-        <img src="logo.png" alt="Flip & Clip Logo" />
-      </div>
-      <nav class="nav-menu">
-        <a href="index.html">Home</a>
 
-        <!-- Dropdown for About -->
-        <div class="dropdown">
-  <button class="dropbtn">About ▾</button>
-  <div class="dropdown-content">
-    <a href="company-background.html">Company Background</a>
-    <a href="sustainability.html">Sustainability</a>
-    <a href="certifications.html">Quality & Certifications</a>
-  </div>
-</div>
+  <!-- Constant Header Loaded Here -->
+  <div id="header-placeholder"></div>
 
-
-        <a href="#">Innovation and Technology</a>
-        <a href="#">Markets and Products</a>
-        <a href="locations.html">Locations</a>
-        <a href="contact.html">Contact</a>
-        <a href="#" class="contact-btn">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <script>
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+      });
+  </script>
 
   <!-- Background video section -->
   <section class="hero">
@@ -57,10 +40,11 @@
     </div>
     <div class="card">
       <h4>INNOVATION AND TECHNOLOGY</h4>
-      <h3>Smart Solutions for Businesss Success</h3>
+      <h3>Smart Solutions for Business Success</h3>
       <p>We provide innovative packaging solutions that help our customers’ brands advance.</p>
       <a href="#">Read more</a>
     </div>
   </section>
+
 </body>
 </html>

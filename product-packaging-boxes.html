@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Packaging Boxes | Shree Ram Packers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    #header-placeholder {
+      margin-bottom: 30px;
+    }
+
+    .hero {
+      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2)),
+        url('assets/boxes-hero.jpg') no-repeat center center/cover;
+      padding: 100px 30px;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .box-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .box-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: 0.3s;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .box-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .box-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .box-card h3 {
+      margin: 15px;
+      font-size: 20px;
+      color: #0d47a1;
+    }
+
+    .box-card p {
+      margin: 0 15px 15px;
+      font-size: 15px;
+      display: none;
+      color: #555;
+    }
+
+    .box-card.open p {
+      display: block;
+    }
+
+    footer {
+      background: #0d47a1;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Packaging Boxes</h1>
+    <p>Discover our premium and custom packaging box solutions for diverse needs and industries.</p>
+  </section>
+
+  <!-- Product Cards -->
+  <div class="container">
+    <div class="box-grid">
+      <div class="box-card" onclick="toggleBox(this)">
+        <img src="assets/gift-box.jpg" alt="Corporate Gifting Box">
+        <h3>Corporate Gifting Boxes</h3>
+        <p>Luxuriously designed rigid boxes perfect for festive and corporate gifting with custom branding options.</p>
+      </div>
+      <div class="box-card" onclick="toggleBox(this)">
+        <img src="assets/sweet-box.jpg" alt="Sweet Box">
+        <h3>Sweet Boxes</h3>
+        <p>Available in both rigid and folding types, our sweet boxes are food-safe, customizable, and elegant.</p>
+      </div>
+      <div class="box-card" onclick="toggleBox(this)">
+        <img src="assets/snack-box.jpg" alt="Snack Box">
+        <h3>Snacks Folding Boxes</h3>
+        <p>Foldable, lightweight boxes ideal for dry snacks, confectionery, and takeaway food packaging.</p>
+      </div>
+      <div class="box-card" onclick="toggleBox(this)">
+        <img src="assets/corrugated-box.jpg" alt="Corrugated Box">
+        <h3>Corrugation Boxes</h3>
+        <p>Sturdy and durable corrugated cartons suitable for shipping, storage, and industrial logistics.</p>
+      </div>
+      <div class="box-card" onclick="toggleBox(this)">
+        <img src="assets/rigid-box.jpg" alt="Rigid Box">
+        <h3>Customized Rigid Boxes</h3>
+        <p>High-quality rigid boxes tailored for electronics, cosmetics, and premium products packaging.</p>
+      </div>
+      <div class="box-card" onclick="toggleBox(this)">
+        <img src="assets/dryfruit-box.jpg" alt="Dry Fruit Box">
+        <h3>Dry Fruit Boxes</h3>
+        <p>Attractive compartmental boxes designed for gifting and storing dry fruits hygienically.</p>
+      </div>
+      <div class="box-card" onclick="toggleBox(this)">
+        <img src="assets/jewellery-box.jpg" alt="Jewellery Box">
+        <h3>Jewellery Boxes</h3>
+        <p>Elegant and protective boxes for rings, earrings, and sets, made from premium textured board.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Shree Ram Packers. All rights reserved.
+  </footer>
+
+  <!-- JS Toggle -->
+  <script>
+    function toggleBox(box) {
+      const isOpen = box.classList.contains('open');
+      document.querySelectorAll('.box-card').forEach(b => b.classList.remove('open'));
+      if (!isOpen) box.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>
