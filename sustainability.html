@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sustainability | Shree Ram Packers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #0d47a1;
+      --accent: #28a745;
+      --light: #f9f9f9;
+      --dark: #1b1b1b;
+      --card-bg: #fff;
+      --text: #333;
+    }
+
+    body.dark-mode {
+      --light: #1a1a1a;
+      --card-bg: #2a2a2a;
+      --text: #eee;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    header.dark-mode {
+      background: #111;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      bottom: -4px;
+      left: 0;
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .contact-btn {
+      background: var(--accent);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 5px;
+    }
+
+    .hero {
+      background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('assets/sustainability-banner.jpg') no-repeat center center/cover;
+      color: white;
+      padding: 100px 30px;
+      text-align: left;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .container h2 {
+      text-align: center;
+      color: var(--primary);
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .card i {
+      font-size: 36px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      font-size: 20px;
+      color: var(--primary);
+    }
+
+    .card p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .cta {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 50px 30px;
+      margin-top: 60px;
+    }
+
+    .cta h2 {
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      padding: 12px 20px;
+      margin-top: 20px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+
+    #toggleTheme {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="assets/logo.png" alt="Logo" height="50">
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="company-background.html">About</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="locations.html">Locations</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="contact-btn">Get Quote</a>
+      <button id="toggleTheme" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" data-aos="fade-up">
+    <h1>Sustainability</h1>
+    <p>At Shree Ram Packers, our commitment to sustainability drives every decision. We integrate green practices into packaging, production, and partnerships — creating a better tomorrow, today.</p>
+  </section>
+
+  <!-- Sustainability Cards -->
+  <section class="container">
+    <h2 data-aos="zoom-in">Our Eco Pillars</h2>
+    <div class="card-grid">
+      <div class="card" data-aos="fade-up">
+        <i class="fas fa-recycle"></i>
+        <h3>Eco Materials</h3>
+        <p>Recycled & biodegradable materials like kraft, pulp board, and eco-inks in all packaging.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-shopping-bag"></i>
+        <h3>Reusable Bags</h3>
+        <p>Durable paper bags designed for multiple uses — promoting reusability and reducing waste.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-bolt"></i>
+        <h3>Energy Efficient</h3>
+        <p>Automated, low-energy machines minimize power usage and carbon output across all factories.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <i class="fas fa-trash-alt"></i>
+        <h3>Zero Waste</h3>
+        <p>We reduce raw waste through optimized die-cutting and reusing scrap materials smartly.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <i class="fas fa-leaf"></i>
+        <h3>Green Innovation</h3>
+        <p>We explore compostable and plant-based materials that look great and save the planet.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="500">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Client Education</h3>
+        <p>We help brands adopt better packaging decisions with sustainability audits and guides.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" data-aos="fade-up">
+    <h2>Ready to Go Green?</h2>
+    <p>Partner with Shree Ram Packers and take your packaging to a sustainable future.</p>
+    <a href="contact.html">Talk to Us</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Shree Ram Packers. All rights reserved.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const toggleBtn = document.getElementById("toggleTheme");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.innerHTML = document.body.classList.contains("dark-mode")
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+    });
+  </script>
+</body>
+</html>
