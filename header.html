@@ -1,5 +1,5 @@
-<!-- Include in header.html -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<!-- Place inside your header.html -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   * {
     margin: 0;
@@ -10,7 +10,7 @@
   header {
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 1000;
     background: #fff;
     padding: 15px 20px;
     display: flex;
@@ -28,9 +28,9 @@
     font-size: 28px;
     cursor: pointer;
     color: #0d47a1;
-    z-index: 1001;
     background: none;
     border: none;
+    z-index: 1100;
   }
 
   nav {
@@ -80,9 +80,9 @@
     left: 0;
     min-width: 180px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
     border-radius: 6px;
-    z-index: 1000;
+    z-index: 999;
+    flex-direction: column;
   }
 
   .dropdown-content a {
@@ -100,6 +100,7 @@
     display: flex;
   }
 
+  /* Mobile Responsive */
   @media (max-width: 768px) {
     .menu-toggle {
       display: block;
@@ -110,24 +111,12 @@
       top: 70px;
       left: 0;
       width: 100%;
-      background: white;
       flex-direction: column;
-      align-items: flex-start;
+      background: white;
       padding: 20px;
+      gap: 10px;
       display: none;
-      animation: slideDown 0.3s ease forwards;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     nav.show {
@@ -139,13 +128,13 @@
       padding: 12px 0;
     }
 
-    .dropdown:hover .dropdown-content {
-      display: none;
-    }
-
-    .dropdown .dropdown-content {
+    .dropdown-content {
       position: static;
       box-shadow: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: none;
     }
 
     .dropdown.open .dropdown-content {
@@ -202,6 +191,7 @@
   document.addEventListener("click", function (e) {
     const nav = document.getElementById("mainNav");
     const toggle = document.querySelector(".menu-toggle");
+
     if (!nav.contains(e.target) && !toggle.contains(e.target)) {
       nav.classList.remove("show");
       document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("open"));
