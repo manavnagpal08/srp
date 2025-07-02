@@ -20,10 +20,11 @@
 
     .hero {
       background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2)),
-        url('boxes-hero.jpg') no-repeat center center/cover;
+        url('assets/boxes-hero.jpg') no-repeat center center/cover;
       padding: 100px 30px;
       color: white;
       text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
     }
 
     .hero h1 {
@@ -41,6 +42,7 @@
       max-width: 1100px;
       margin: 50px auto;
       padding: 0 20px;
+      animation: slideInUp 1s ease-in-out;
     }
 
     .box-grid {
@@ -51,20 +53,22 @@
 
     .box-card {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: 0.3s;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
       overflow: hidden;
       cursor: pointer;
+      transform: scale(1);
     }
 
     .box-card:hover {
-      transform: translateY(-5px);
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
     }
 
     .box-card img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
     }
 
@@ -92,11 +96,20 @@
       padding: 20px;
       margin-top: 50px;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <div id="header-placeholder"></div>
   <script>
     fetch("header.html")
@@ -106,59 +119,19 @@
       });
   </script>
 
-  <!-- Hero Section -->
   <section class="hero">
     <h1>Packaging Boxes</h1>
     <p>Discover our premium and custom packaging box solutions for diverse needs and industries.</p>
   </section>
 
-  <!-- Product Cards -->
   <div class="container">
-    <div class="box-grid">
-      <div class="box-card" onclick="toggleBox(this)">
-        <img src="assets/gift-box.jpg" alt="Corporate Gifting Box">
-        <h3>Corporate Gifting Boxes</h3>
-        <p>Luxuriously designed rigid boxes perfect for festive and corporate gifting with custom branding options.</p>
-      </div>
-      <div class="box-card" onclick="toggleBox(this)">
-        <img src="assets/sweet-box.jpg" alt="Sweet Box">
-        <h3>Sweet Boxes</h3>
-        <p>Available in both rigid and folding types, our sweet boxes are food-safe, customizable, and elegant.</p>
-      </div>
-      <div class="box-card" onclick="toggleBox(this)">
-        <img src="assets/snack-box.jpg" alt="Snack Box">
-        <h3>Snacks Folding Boxes</h3>
-        <p>Foldable, lightweight boxes ideal for dry snacks, confectionery, and takeaway food packaging.</p>
-      </div>
-      <div class="box-card" onclick="toggleBox(this)">
-        <img src="assets/corrugated-box.jpg" alt="Corrugated Box">
-        <h3>Corrugation Boxes</h3>
-        <p>Sturdy and durable corrugated cartons suitable for shipping, storage, and industrial logistics.</p>
-      </div>
-      <div class="box-card" onclick="toggleBox(this)">
-        <img src="assets/rigid-box.jpg" alt="Rigid Box">
-        <h3>Customized Rigid Boxes</h3>
-        <p>High-quality rigid boxes tailored for electronics, cosmetics, and premium products packaging.</p>
-      </div>
-      <div class="box-card" onclick="toggleBox(this)">
-        <img src="assets/dryfruit-box.jpg" alt="Dry Fruit Box">
-        <h3>Dry Fruit Boxes</h3>
-        <p>Attractive compartmental boxes designed for gifting and storing dry fruits hygienically.</p>
-      </div>
-      <div class="box-card" onclick="toggleBox(this)">
-        <img src="assets/jewellery-box.jpg" alt="Jewellery Box">
-        <h3>Jewellery Boxes</h3>
-        <p>Elegant and protective boxes for rings, earrings, and sets, made from premium textured board.</p>
-      </div>
-    </div>
+    <div class="box-grid" id="boxGrid"></div>
   </div>
 
-  <!-- Footer -->
   <footer>
     &copy; 2025 Shree Ram Packers. All rights reserved.
   </footer>
 
-  <!-- JS Toggle -->
   <script>
     function toggleBox(box) {
       const isOpen = box.classList.contains('open');
@@ -167,5 +140,44 @@
     }
   </script>
 
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDX1ignbVqrw138rEcoxozFgFqGsCKmWok",
+      authDomain: "srpp-80b0e.firebaseapp.com",
+      projectId: "srpp-80b0e",
+      storageBucket: "srpp-80b0e.appspot.com",
+      messagingSenderId: "607479696432",
+      appId: "1:607479696432:web:0b22e96f4b5a3cbd5971f5",
+      measurementId: "G-GMG7Z059ZQ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    db.collection("packaging-boxes").get().then(snapshot => {
+      const grid = document.getElementById("boxGrid");
+      if (snapshot.empty) {
+        grid.innerHTML = "<p>No boxes found.</p>";
+      }
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const card = document.createElement("div");
+        card.className = "box-card";
+        card.onclick = () => toggleBox(card);
+        card.innerHTML = `
+          <img src="${data.imageURL}" alt="${data.title}">
+          <h3>${data.title}</h3>
+          <p>${data.description}</p>
+        `;
+        grid.appendChild(card);
+      });
+    }).catch(error => {
+      console.error("Error loading boxes:", error);
+      document.getElementById("boxGrid").innerHTML = `<p style="color:red;">Failed to load boxes: ${error.message}</p>`;
+    });
+  </script>
 </body>
 </html>

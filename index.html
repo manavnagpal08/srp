@@ -2,127 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Shree Ram Packers | Premium Packaging Solutions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
-      color: #333;
-    }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 90vh;
-      overflow: hidden;
-    }
-
-    .hero video {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-
-    .hero-text {
-      padding: 80px 30px;
-      color: white;
-      max-width: 700px;
-      animation: fadeIn 1s ease;
-    }
-
-    .hero-text h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
-
-    .hero-text p {
-      font-size: 18px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Cards Section */
-    .cards-section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h4 {
-      color: #0d47a1;
-      font-size: 14px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .card h3 {
-      font-size: 20px;
-      margin: 10px 0;
-    }
-
-    .card p {
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 12px;
-      color: #0d47a1;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    /* Footer */
-    footer {
-      background: #0d47a1;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .hero-text h1 {
-        font-size: 30px;
-      }
-
-      .hero-text p {
-        font-size: 16px;
-      }
-    }
-  </style>
+  <title>Flip & Clip</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Load header -->
+  <!-- Constant Header Loaded Here -->
   <div id="header-placeholder"></div>
+
   <script>
     fetch("header.html")
       .then(response => response.text())
@@ -131,44 +18,33 @@
       });
   </script>
 
-  <!-- Hero Section -->
+  <!-- Background video section -->
   <section class="hero">
-    <video autoplay muted loop playsinline>
-      <source src="packaging.mp4" type="video/mp4">
+    <video autoplay muted loop id="bg-video">
+      <source src="bg.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
     <div class="hero-text">
-      <h1>Smart. Sustainable. Shree Ram.</h1>
-      <p>We deliver innovative, eco-conscious packaging for sweets, jewelry, and lifestyle brands across India.</p>
+      <h1>Smart, Sustainable Packaging for Tomorrow</h1>
+      <p>We combine innovation and responsibility to deliver packaging that powers your brand and protects the planet.</p>
     </div>
   </section>
 
-  <!-- Highlights -->
+  <!-- News & Innovation -->
   <section class="cards-section">
     <div class="card">
-      <h4>OUR MATERIALS</h4>
-      <h3>Recyclable, Biodegradable & Beautiful</h3>
-      <p>We use kraft paper, board, and soy-based inks to create packaging that’s both premium and planet-friendly.</p>
-      <a href="sustainability.html">Explore Sustainability</a>
+      <h4>NEWS AND EVENTS</h4>
+      <h3>Parksons-MK Printpack Announcement</h3>
+      <p>Warburg Pincus backed Parksons Packaging, a leading paper packaging company in India, today announced that…</p>
+      <a href="#">Read more</a>
     </div>
     <div class="card">
-      <h4>TECH + CREATIVITY</h4>
-      <h3>Where Design Meets Precision</h3>
-      <p>Our in-house innovation team works with cutting-edge equipment to ensure perfect cuts, folds, and finishes every time.</p>
-      <a href="#">See Innovation</a>
-    </div>
-    <div class="card">
-      <h4>MARKETS WE SERVE</h4>
-      <h3>Jewelry, Sweets & More</h3>
-      <p>From festive mithai boxes to luxurious ring boxes — we supply tailored solutions for India’s top businesses.</p>
-      <a href="product.html">View Products</a>
+      <h4>INNOVATION AND TECHNOLOGY</h4>
+      <h3>Smart Solutions for Business Success</h3>
+      <p>We provide innovative packaging solutions that help our customers’ brands advance.</p>
+      <a href="#">Read more</a>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Shree Ram Packers. All rights reserved.
-  </footer>
 
 </body>
 </html>
