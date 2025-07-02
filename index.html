@@ -3,11 +3,130 @@
 <head>
   <meta charset="UTF-8" />
   <title>Flip & Clip - Sustainable Packaging Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f8fb;
+      color: #333;
+    }
+
+    /* HEADER placeholder */
+    #header-placeholder {
+      z-index: 1000;
+    }
+
+    /* Hero section */
+    .hero {
+      position: relative;
+      height: 90vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    #bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .hero-text {
+      padding: 0 20px;
+      max-width: 700px;
+      z-index: 2;
+    }
+
+    .hero-text h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+    }
+
+    /* Cards Section */
+    .cards-section {
+      display: flex;
+      gap: 30px;
+      padding: 60px 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      flex: 1 1 300px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .card h4 {
+      color: #0d47a1;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .card p {
+      font-size: 15px;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #d60000;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 28px;
+      }
+      .hero-text p {
+        font-size: 16px;
+      }
+      .cards-section {
+        padding: 40px 15px;
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
+        width: 90%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Constant Header Loaded Here -->
+  <!-- Shared Header -->
   <div id="header-placeholder"></div>
 
   <script>
@@ -18,10 +137,10 @@
       });
   </script>
 
-  <!-- Background video section -->
+  <!-- Hero with video -->
   <section class="hero">
     <video autoplay muted loop id="bg-video">
-      <source src="bg.mp4" type="video/mp4">
+      <source src="packaging.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
     <div class="hero-text">
@@ -30,7 +149,7 @@
     </div>
   </section>
 
-  <!-- News & Highlights -->
+  <!-- Highlights / News -->
   <section class="cards-section">
     <div class="card">
       <h4>INNOVATION</h4>
