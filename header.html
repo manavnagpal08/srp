@@ -1,6 +1,6 @@
 <!-- header.html -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
   :root {
@@ -8,18 +8,23 @@
     --accent: #d60000;
   }
 
-  body {
+  * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
     font-family: 'Poppins', sans-serif;
   }
 
   header {
-    background: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: white;
     padding: 15px 25px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -29,24 +34,24 @@
     height: 50px;
   }
 
-  nav {
+  .nav-links {
     display: flex;
-    align-items: center;
     gap: 20px;
+    align-items: center;
   }
 
-  nav a {
+  .nav-links a {
     text-decoration: none;
     color: #333;
     font-weight: 500;
     position: relative;
   }
 
-  nav a:hover::after {
+  .nav-links a:hover::after {
     width: 100%;
   }
 
-  nav a::after {
+  .nav-links a::after {
     content: '';
     position: absolute;
     width: 0;
@@ -54,14 +59,7 @@
     background: var(--primary);
     bottom: -4px;
     left: 0;
-    transition: 0.3s;
-  }
-
-  nav .contact-btn {
-    background: var(--accent);
-    color: white;
-    padding: 8px 14px;
-    border-radius: 5px;
+    transition: 0.3s ease;
   }
 
   .dropdown {
@@ -71,16 +69,16 @@
   .dropdown-content {
     display: none;
     position: absolute;
+    top: 35px;
     background: white;
-    top: 100%;
-    left: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 999;
     min-width: 180px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .dropdown-content a {
-    display: block;
     padding: 10px 16px;
+    display: block;
     color: #333;
     text-decoration: none;
   }
@@ -89,16 +87,28 @@
     display: block;
   }
 
-  .menu-icon {
+  .contact-btn {
+    background: var(--accent);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
+  .menu-toggle {
     display: none;
-    font-size: 26px;
+    font-size: 24px;
     cursor: pointer;
     color: var(--primary);
   }
 
-  /* ========== Mobile Styles ========== */
+  /* =============== Mobile =============== */
   @media (max-width: 768px) {
-    nav {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-links {
       display: none;
       flex-direction: column;
       width: 100%;
@@ -107,15 +117,11 @@
       top: 70px;
       left: 0;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    nav.active {
+    .nav-links.active {
       display: flex;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: none;
     }
 
     .dropdown-content {
@@ -123,11 +129,11 @@
       box-shadow: none;
     }
 
-    .dropdown.active .dropdown-content {
-      display: block;
+    .dropdown:hover .dropdown-content {
+      display: none;
     }
 
-    .menu-icon {
+    .dropdown.active .dropdown-content {
       display: block;
     }
   }
@@ -135,12 +141,12 @@
 
 <header>
   <div class="logo">
-    <a href="index.html"><img src="assets/logo.png" alt="Flip & Clip Logo" /></a>
+    <a href="index.html"><img src="assets/logo.png" alt="Shree Ram Packers Logo"></a>
   </div>
 
-  <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+  <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
 
-  <nav id="navMenu">
+  <nav class="nav-links" id="navMenu">
     <a href="index.html">Home</a>
 
     <div class="dropdown">
@@ -148,14 +154,14 @@
       <div class="dropdown-content">
         <a href="company-background.html">Company Background</a>
         <a href="sustainability.html">Sustainability</a>
-        <a href="certifications.html">Quality & Certifications</a>
+        <a href="certifications.html">Certifications</a>
       </div>
     </div>
 
     <a href="#">Innovation</a>
 
     <div class="dropdown">
-      <a href="#">Markets & Products ▾</a>
+      <a href="#">Markets ▾</a>
       <div class="dropdown-content">
         <a href="product.html#paper-bags">Paper Bags</a>
         <a href="product.html#packaging-boxes">Packaging Boxes</a>
@@ -168,19 +174,19 @@
 </header>
 
 <script>
-  const toggleBtn = document.getElementById("menuToggle");
-  const nav = document.getElementById("navMenu");
-  const dropdowns = document.querySelectorAll(".dropdown");
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+  const dropdowns = document.querySelectorAll('.dropdown');
 
-  toggleBtn.onclick = () => {
-    nav.classList.toggle("active");
+  menuToggle.onclick = () => {
+    navMenu.classList.toggle('active');
   };
 
   dropdowns.forEach(drop => {
-    drop.addEventListener("click", (e) => {
+    drop.addEventListener('click', (e) => {
       if (window.innerWidth <= 768) {
         e.preventDefault();
-        drop.classList.toggle("active");
+        drop.classList.toggle('active');
       }
     });
   });
