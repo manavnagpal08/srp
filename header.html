@@ -1,5 +1,5 @@
-<!-- Place inside your header.html -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Include in header.html -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
   * {
     margin: 0;
@@ -10,7 +10,7 @@
   header {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 999;
     background: #fff;
     padding: 15px 20px;
     display: flex;
@@ -28,9 +28,9 @@
     font-size: 28px;
     cursor: pointer;
     color: #0d47a1;
+    z-index: 1001;
     background: none;
     border: none;
-    z-index: 1100;
   }
 
   nav {
@@ -80,9 +80,9 @@
     left: 0;
     min-width: 180px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
-    z-index: 999;
     flex-direction: column;
+    border-radius: 6px;
+    z-index: 1000;
   }
 
   .dropdown-content a {
@@ -100,7 +100,6 @@
     display: flex;
   }
 
-  /* Mobile Responsive */
   @media (max-width: 768px) {
     .menu-toggle {
       display: block;
@@ -111,12 +110,24 @@
       top: 70px;
       left: 0;
       width: 100%;
-      flex-direction: column;
       background: white;
+      flex-direction: column;
+      align-items: flex-start;
       padding: 20px;
-      gap: 10px;
       display: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: slideDown 0.3s ease forwards;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     nav.show {
@@ -128,13 +139,13 @@
       padding: 12px 0;
     }
 
-    .dropdown-content {
-      position: static;
-      box-shadow: none;
-    }
-
     .dropdown:hover .dropdown-content {
       display: none;
+    }
+
+    .dropdown .dropdown-content {
+      position: static;
+      box-shadow: none;
     }
 
     .dropdown.open .dropdown-content {
@@ -153,8 +164,8 @@
   <nav id="mainNav">
     <a href="index.html">Home</a>
 
-    <div class="dropdown" onclick="toggleDropdown(this)">
-      <a href="javascript:void(0)">About ▾</a>
+    <div class="dropdown">
+      <a href="javascript:void(0)" onclick="toggleDropdown(this.parentElement)">About ▾</a>
       <div class="dropdown-content">
         <a href="company-background.html">Company Background</a>
         <a href="sustainability.html">Sustainability</a>
@@ -164,8 +175,8 @@
 
     <a href="#">Innovation & Tech</a>
 
-    <div class="dropdown" onclick="toggleDropdown(this)">
-      <a href="javascript:void(0)">Markets & Products ▾</a>
+    <div class="dropdown">
+      <a href="javascript:void(0)" onclick="toggleDropdown(this.parentElement)">Markets & Products ▾</a>
       <div class="dropdown-content">
         <a href="product.html#paper-bags">Paper Bags</a>
         <a href="product.html#packaging-boxes">Packaging Boxes</a>
@@ -191,10 +202,11 @@
   document.addEventListener("click", function (e) {
     const nav = document.getElementById("mainNav");
     const toggle = document.querySelector(".menu-toggle");
+    const dropdowns = document.querySelectorAll(".dropdown");
 
     if (!nav.contains(e.target) && !toggle.contains(e.target)) {
       nav.classList.remove("show");
-      document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("open"));
+      dropdowns.forEach(d => d.classList.remove("open"));
     }
   });
 </script>
