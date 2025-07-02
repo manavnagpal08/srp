@@ -14,7 +14,6 @@
       color: #333;
     }
 
-    /* Header loaded dynamically */
     #header-placeholder {
       margin-bottom: 30px;
     }
@@ -86,6 +85,27 @@
       display: block;
     }
 
+    .etching {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px 20px;
+      background: linear-gradient(to bottom, #fff, #f0f4ff);
+      border-top: 1px solid #ccc;
+    }
+
+    .etching h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #0d47a1;
+    }
+
+    .etching p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 16px;
+      color: #444;
+    }
+
     footer {
       background: #0d47a1;
       color: white;
@@ -97,7 +117,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <div id="header-placeholder"></div>
   <script>
     fetch("header.html")
@@ -107,49 +126,24 @@
       });
   </script>
 
-  <!-- Hero Section -->
   <section class="hero">
     <h1>Paper Bags</h1>
     <p>Explore our wide range of eco-friendly and custom paper bags for every industry and use.</p>
   </section>
 
-  <!-- Product Cards -->
   <div class="container">
-    <div class="bag-grid">
-      <div class="bag-card" onclick="toggleCard(this)">
-        <img src="assets/paperbag-grocery.jpg" alt="Grocery Bag">
-        <h3>Grocery Bags</h3>
-        <p>Durable and recyclable kraft paper bags ideal for groceries and daily essentials. Available in multiple sizes with or without handles.</p>
-      </div>
-      <div class="bag-card" onclick="toggleCard(this)">
-        <img src="assets/retail-bag.jpg" alt="Retail Bag">
-        <h3>Retail & Shopping Bags</h3>
-        <p>Stylish printed paper bags for retail, clothing, and boutiques. Made from thick kraft paper with twisted or flat handles.</p>
-      </div>
-      <div class="bag-card" onclick="toggleCard(this)">
-        <img src="assets/sweet-bag.jpg" alt="Sweet Bag">
-        <h3>Sweet/Bakery Bags</h3>
-        <p>Grease-resistant paper bags designed to hold sweets, pastries, and bakery items safely and hygienically.</p>
-      </div>
-      <div class="bag-card" onclick="toggleCard(this)">
-        <img src="assets/white-bag.jpg" alt="White Bag">
-        <h3>Standard White Bags</h3>
-        <p>Clean and minimalistic white paper bags perfect for branding and promotions. Available in a variety of sizes.</p>
-      </div>
-      <div class="bag-card" onclick="toggleCard(this)">
-        <img src="assets/luxury-bag.jpg" alt="Luxury Bag">
-        <h3>Luxury Paper Bags</h3>
-        <p>Premium laminated paper bags with ribbon handles and embossed logo printing — ideal for high-end retail or gifting.</p>
-      </div>
-    </div>
+    <div class="bag-grid" id="bagGrid"></div>
   </div>
 
-  <!-- Footer -->
+  <section class="etching">
+    <h2>Custom Etching & Branding</h2>
+    <p>We offer premium etching and personalized branding on all our paper bags. Make your packaging speak for your brand with elegant designs, logos, or messages tailored to your audience.</p>
+  </section>
+
   <footer>
     &copy; 2025 Shree Ram Packers. All rights reserved.
   </footer>
 
-  <!-- JS Toggle Function -->
   <script>
     function toggleCard(card) {
       const isOpen = card.classList.contains('open');
@@ -158,5 +152,39 @@
     }
   </script>
 
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDX1ignbVqrw138rEcoxozFgFqGsCKmWok",
+      authDomain: "srpp-80b0e.firebaseapp.com",
+      projectId: "srpp-80b0e",
+      storageBucket: "srpp-80b0e.appspot.com",
+      messagingSenderId: "607479696432",
+      appId: "1:607479696432:web:0b22e96f4b5a3cbd5971f5",
+      measurementId: "G-GMG7Z059ZQ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    db.collection("paper=bags").get().then(snapshot => {
+      const grid = document.getElementById("bagGrid");
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const card = document.createElement("div");
+        card.className = "bag-card";
+        card.onclick = () => toggleCard(card);
+        card.innerHTML = `
+          <img src="${data.imageURL}" alt="${data.title}">
+          <h3>${data.title}</h3>
+          <p>${data.description}</p>
+        `;
+        grid.appendChild(card);
+      });
+    });
+  </script>
 </body>
 </html>
